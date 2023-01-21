@@ -18,7 +18,7 @@ class Challenge extends Model
         
         $dist = (acos(COS($lat1Rad) * COS($lng1Rad) * COS($lat2Rad) * COS($lng2Rad) + COS($lat1Rad) * SIN($lng1Rad) * COS($lat2Rad) * SIN($lng2Rad) + SIN($lat1Rad) * SIN($lat2Rad)) * 6371);
         
-        return $dist;
+        return round($dist, 3);
     }
 
     public static function convertFile($file){
