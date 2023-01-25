@@ -24,16 +24,12 @@
                 <button type="button" class="btn btn-sm btn-dark float-end shadow-sm" onclick="location.reload();">New Query</button>
             </div>
             <div class="col-md-12">
-                <div class="h3">Result</div>
-                <div class="w-100 border border-dark rounded">
+                <div class="col-8 border border-dark rounded m-auto p-3 shadow">
                     <table id="table" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Affiliate ID</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Latitude</th>
-                                <th scope="col">Longitude</th>
-                                <th scope="col">Distance</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +46,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalQueryLabel">New Query</h5>
+                    <h5 class="modal-title" id="modalQueryLabel">Dev Code Test</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -125,9 +121,6 @@
                         $("#table tbody").append('<tr>'+
                                                     '<td>'+value.affiliate_id+'</td>'+
                                                     '<td>'+value.name+'</td>'+
-                                                    '<td>'+value.latitude+'</td>'+
-                                                    '<td>'+value.longitude+'</td>'+
-                                                    '<td>'+value.distance+' Km</td>'+
                                                 '</tr>');
                     });
                     $('#table').DataTable();
