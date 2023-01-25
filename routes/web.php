@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChallengeController;
-use App\Models\Challenge;
+use App\Http\Controllers\AffiliateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +15,6 @@ use App\Models\Challenge;
 */
 
 Route::get('/', function () {
-    return view('challenge');
+    return view('index');
 }); 
-Route::post('/send', [ChallengeController::class, 'activity'])->name('send');
+Route::post('/send', [AffiliateController::class, 'checkDistance'])->name('send');

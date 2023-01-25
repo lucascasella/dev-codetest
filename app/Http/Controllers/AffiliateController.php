@@ -1,13 +1,35 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use App\Http\Requests\AffiliateQueryRequest;
+use App\Models\Affiliate;
 
-class Challenge extends Model
+class AffiliateController extends Controller
 {
-    use HasFactory;
+    public static function checkDistance(AffiliateQueryRequest $request){
+        
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
+        $scope = $request->scope;
+        $affiliateList = self::convertFile($request->affiliateList);
+        
+        $returnList = [];
+        foreach($affiliateList as $affiliate){
+            $distance = self::distancia($latitude,$longitude, $affiliate->latitude, $affiliate->longitude);
+            if($distance <= $scope){
+             
+       
+                $returnList[] = ["affiliate_id" => $affiliate->affiliate_id, 
+                                "name" =>  $affiliate->name, 
+                                "latitude" =>  $affiliate->latitude, 
+                                "longitude" =>  $affiliate->longitude, 
+                                "distance" =>  $distance];
+            }
+        }
+        return $returnList;        
+    }
 
     public static function distancia($lat1, $lng1, $lat2, $lng2) {
 
